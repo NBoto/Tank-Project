@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerTankController : MonoBehaviour
 {
 
+    // Assistance/Referance used:
+    // Tank Tutorial: https://www.youtube.com/watch?v=monYp9VlBy4&t=1s
     public Rigidbody2D rb2d;
     private Vector2 movementVector;
+    public GameObject Shell;
+    public GameObject TurretEndPoint;
     public float maxSpeed = 30;
     public float rotationSpeed = 100;
     public float turretRotationSpeed = 100;
+    public float lastFired;
 
     public Transform turretParent;
 
@@ -20,7 +25,14 @@ public class PlayerTankController : MonoBehaviour
 
     public void HandleShoot()
     {
-        Debug.Log("Shooting");
+        GameObject tmpShell;
+        if (Time.time > lastFired + 0.3f)
+        {
+            Debug.Log("Shooting");
+            var FixAngle = Quaternion.Euler(0, 0, -90);
+            tmpShell = Instantiate(Shell, TurretEndPoint.transform.position + (TurretEndPoint.transform.right * 0.7f), TurretEndPoint.transform.rotation * FixAngle);
+            lastFired = Time.time;
+        }
     }
 
     public void HandleMoveBody(Vector2 movementVector)
