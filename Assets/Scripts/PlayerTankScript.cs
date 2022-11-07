@@ -7,6 +7,7 @@ public class PlayerTankScript : MonoBehaviour
     public Rigidbody2D TankRigid;
     public GameObject TurretObj;
     public GameObject Shell;
+    public int ShellsActive;
 
     //Input keys vars//
     public string Up;
@@ -55,11 +56,11 @@ public class PlayerTankScript : MonoBehaviour
         }
         if (Input.GetKey(Shoot))
         {
-
-            if (Time.time > lastFired + 0.4f)
+            ShellsActive = GameObject.FindGameObjectsWithTag("PlayerShell").Length;
+            if (Time.time > lastFired + 0.4f & ShellsActive < 3)
             {
-                TmpShell = Instantiate(Shell, TurretObj.transform.position + (TurretObj.transform.right * 1.2f), TurretObj.transform.rotation*Quaternion.Euler(0f,0f,-90f));
-                lastFired = Time.time;
+                 TmpShell = Instantiate(Shell, TurretObj.transform.position + (TurretObj.transform.right * 1.2f), TurretObj.transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                 lastFired = Time.time;
             }
         }
         //////////////
