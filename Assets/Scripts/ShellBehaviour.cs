@@ -20,7 +20,7 @@ public class ShellBehaviour : MonoBehaviour
     void Update()
     {
         ShellLife++;
-        if (ShellLife >= 3250) {
+        if (ShellLife >= 2250) {
             Destroy(this.gameObject);
         }
 
@@ -33,9 +33,13 @@ public class ShellBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment")
         {
+            if (ShellLife <= 50)
+            {
+                Destroy(this.gameObject);
+            }
             // https://forum.unity.com/threads/2d-ricochet-solved.501723/ <- Code location v
             Vector3 v = Vector2.Reflect(transform.right, collision.contacts[0].normal);
-            float rot = Random.Range(-150, -200) - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
+            float rot = Random.Range(-120, -200) - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, rot);
             // ^
         }

@@ -7,6 +7,8 @@ public class PlayerTankScript : MonoBehaviour
     public Rigidbody2D TankRigid;
     public GameObject TurretObj;
     public GameObject Shell;
+    public ParticleSystem Enginel;
+    public ParticleSystem Enginer;
     public int ShellsActive;
 
     //Input keys vars//
@@ -41,10 +43,16 @@ public class PlayerTankScript : MonoBehaviour
         if (Input.GetKey(Up))
         {
             TankRigid.transform.Translate(new Vector3(4f, 0f, 0f) * Time.deltaTime * 1);
+            Enginer.Play();
+            Enginel.Play();
+        } else {
+            Enginer.Stop();
+            Enginel.Stop();
         }
+
         if (Input.GetKey(Down))
         {
-            TankRigid.transform.Translate(new Vector3(-4f,-0f, 0f) * Time.deltaTime * 1);
+            TankRigid.transform.Translate(new Vector3(-4f, -0f, 0f) * Time.deltaTime * 1);
         }
         if (Input.GetKey(Left))
         {
@@ -53,7 +61,9 @@ public class PlayerTankScript : MonoBehaviour
         if (Input.GetKey(Right))
         {
             TankRigid.transform.Rotate(new Vector3(0f, 0f, -200f) * Time.deltaTime * 1);
+
         }
+
         if (Input.GetKey(Shoot))
         {
             ShellsActive = GameObject.FindGameObjectsWithTag("PlayerShell").Length;
