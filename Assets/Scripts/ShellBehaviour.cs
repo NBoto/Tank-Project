@@ -33,7 +33,7 @@ public class ShellBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Environment")
         {
-            if (ShellLife <= 50)
+            if (ShellLife <= 20)
             {
                 Destroy(this.gameObject);
             }

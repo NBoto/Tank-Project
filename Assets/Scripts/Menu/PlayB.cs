@@ -29,7 +29,7 @@ public class PlayB : MonoBehaviour
 
     public void handleClick()
     {
-        SceneManager.LoadScene("Grasslands");
+        SceneManager.LoadScene("LevelSelector");
         //myDestination.text = mySource.text;
 
         //PlayerPrefs.SetString("text set", mySource.text); //This is the new line we are discussing in this session!
