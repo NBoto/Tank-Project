@@ -7,6 +7,8 @@ public class ShellBehaviour : MonoBehaviour
 
     private Rigidbody2D ShellRigid;
     private int ShellLife;
+    private GameStateManager gsm;
+
 
     // Use this for initialization
     void Start()
@@ -14,6 +16,7 @@ public class ShellBehaviour : MonoBehaviour
         ShellRigid = this.GetComponent<Rigidbody2D>();
         ShellRigid.transform.localScale = (new Vector3(0.1f, 0.1f, 0.1f));
         //ShellRigid.AddForce(this.transform.up * 1350);
+        gsm = GameObject.Find("GameState").GetComponent<GameStateManager>();
     }
 
     // Update is called once per frame
@@ -57,6 +60,7 @@ public class ShellBehaviour : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+            gsm.adjustScore(1);
         }
         if (collision.gameObject.tag == "EnemyShell")
         {
