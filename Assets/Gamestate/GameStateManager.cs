@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    public GameObject prefab;
     public bool NoEnemiesLeft;
     private int score;
 

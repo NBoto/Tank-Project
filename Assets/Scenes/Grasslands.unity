@@ -1995,6 +1995,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerTank
       objectReference: {fileID: 0}
+    - target: {fileID: 5987176737834628678, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987176737834628678, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987176737834628678, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987176737834628678, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987176737834628678, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5987176737834628696, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
       propertyPath: m_RootOrder
       value: 1
