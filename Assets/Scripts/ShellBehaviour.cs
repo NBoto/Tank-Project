@@ -21,13 +21,16 @@ public class ShellBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!PauseMenu.Paused) {
         ShellLife++;
-        if (ShellLife >= 2250) {
+        if (ShellLife >= 2250)
+        {
             Destroy(this.gameObject);
         }
 
         //ShellRigid.AddForce(this.transform.up * 8);
         ShellRigid.transform.Translate(new Vector3(0f, 0.007f, 0f));
+        }
 
     }
 

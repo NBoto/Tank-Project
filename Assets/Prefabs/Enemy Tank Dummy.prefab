@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1275551790621623749}
   m_Layer: 0
   m_Name: Enemy Tank Dummy
-  m_TagString: Enemy
+  m_TagString: EnemyDecoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
