@@ -7,6 +7,7 @@ public class ShellBehaviour : MonoBehaviour
 
     private Rigidbody2D ShellRigid;
     private int ShellLife;
+    public AudioSource RicochetSFX;
     private GameStateManager gsm;
 
     // Use this for initialization
@@ -23,7 +24,7 @@ public class ShellBehaviour : MonoBehaviour
     {
         if (!PauseMenu.Paused) {
         ShellLife++;
-        if (ShellLife >= 2250)
+        if (ShellLife >= 4250)
         {
             Destroy(this.gameObject);
             }
@@ -42,8 +43,11 @@ public class ShellBehaviour : MonoBehaviour
             if (ShellLife <= 20)
             {
                 Destroy(this.gameObject);
+            }else
+            {
+                RicochetSFX.Play();
             }
-            // https://forum.unity.com/threads/2d-ricochet-solved.501723/ <- Code location v
+            // https://forum.unity.com/threads/2d-ricochet-solved.501723/ <- Code Ref location v
             Vector3 v = Vector2.Reflect(transform.right, collision.contacts[0].normal);
             float rot = Random.Range(-120, -200) - Mathf.Atan2(v.z, v.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, 0, rot);

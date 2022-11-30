@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7444570972612706621}
   m_Layer: 0
   m_Name: TankTurretParent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4990,7 +4990,9 @@ MonoBehaviour:
   Shell: {fileID: 933379790493691467, guid: 0c6d09c2fc4c3a447b8a22ff412046b6, type: 3}
   Enginel: {fileID: 795694174179402542}
   Enginer: {fileID: 6879298385477440978}
-  ShellsActive: 0
+  targets: []
+  waypoints: []
+  gsm: {fileID: 0}
   Shoot: 
   lastFired: 0
 --- !u!1 &6423827405443897292

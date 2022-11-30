@@ -9,6 +9,8 @@ public class PlayerTankScript : MonoBehaviour
     public GameObject Shell;
     public ParticleSystem Enginel;
     public ParticleSystem Enginer;
+    public AudioSource EngineSFX;
+    public AudioSource FireSFX;
     public int ShellsActive;
 
     //Input keys vars//
@@ -24,7 +26,7 @@ public class PlayerTankScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        EngineSFX.Play();
     }
 
     // Update is called once per frame
@@ -45,14 +47,18 @@ public class PlayerTankScript : MonoBehaviour
             TankRigid.transform.Translate(new Vector3(4f, 0f, 0f) * Time.deltaTime * 1);
             Enginer.Play();
             Enginel.Play();
-        } else {
-            Enginer.Stop();
-            Enginel.Stop();
+            EngineSFX.UnPause();
         }
-
-        if (Input.GetKey(Down))
+        else
+        if(Input.GetKey(Down))
         {
             TankRigid.transform.Translate(new Vector3(-4f, -0f, 0f) * Time.deltaTime * 1);
+            EngineSFX.UnPause();
+        }
+        else {
+            Enginer.Stop();
+            Enginel.Stop();
+            EngineSFX.Pause();
         }
         if (Input.GetKey(Left))
         {
@@ -67,8 +73,9 @@ public class PlayerTankScript : MonoBehaviour
         if (Input.GetKey(Shoot))
         {
             ShellsActive = GameObject.FindGameObjectsWithTag("PlayerShell").Length;
-            if (Time.time > lastFired + 0.4f & ShellsActive < 3)
+            if (Time.time > lastFired + 0.4f & ShellsActive < 5)
             {
+                 FireSFX.Play();
                  TmpShell = Instantiate(Shell, TurretObj.transform.position + (TurretObj.transform.right * 1.2f), TurretObj.transform.rotation * Quaternion.Euler(0f, 0f, -90f));
                  lastFired = Time.time;
             }
