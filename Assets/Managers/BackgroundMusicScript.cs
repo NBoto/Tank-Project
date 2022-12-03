@@ -15,6 +15,7 @@ public class BackgroundMusicScript : MonoBehaviour
     public AudioSource PlayerEngine;
     public AudioSource PlayerFire;
     public AudioSource ShellRicochet;
+    public AudioSource ShellExplosion;
     public Slider MusicSlider;
     public int MusicVolumeInt;
     public Slider SFXSlider;
@@ -31,6 +32,7 @@ public class BackgroundMusicScript : MonoBehaviour
             PlayerEngine.volume = SFXSlider.value;
             PlayerFire.volume = SFXSlider.value;
             ShellRicochet.volume = SFXSlider.value;
+            ShellExplosion.volume = SFXSlider.value;
         }
     }
 

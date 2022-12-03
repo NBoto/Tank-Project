@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ShellBehaviour : MonoBehaviour
@@ -9,6 +10,8 @@ public class ShellBehaviour : MonoBehaviour
     private int ShellLife;
     public AudioSource RicochetSFX;
     private GameStateManager gsm;
+    public GameObject ExplosionP;
+    public AudioSource ExplosionSFX;
 
     // Use this for initialization
     void Start()
@@ -38,6 +41,8 @@ public class ShellBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        GameObject Explosion;
+
         if (collision.gameObject.tag == "Environment")
         {
             if (ShellLife <= 20)
@@ -57,29 +62,44 @@ public class ShellBehaviour : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+
+            Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
+            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "PlayerShell")
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+
+            Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
+            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "EnemyDecoy")
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
             gsm.adjustScore(5);
+
+            Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
+            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
             gsm.adjustScore(5);
+
+            Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
+            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "EnemyShell")
         {
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
             gsm.adjustScore(1);
+
+            Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
+            ExplosionSFX.Play();
         }
     }
 }
