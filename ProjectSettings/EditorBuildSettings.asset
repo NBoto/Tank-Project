@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TargetTutorial.unity
     guid: be1ccc009c668444ca1068e2e3db8669
+  - enabled: 1
+    path: Assets/Scenes/DestroyedScene.unity
+    guid: 200687e8fa6c3324fa8915048d039ddb
   m_configObjects: {}

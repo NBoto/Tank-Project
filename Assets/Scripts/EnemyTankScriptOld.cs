@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTankScript : MonoBehaviour
+public class EnemyTankScriptOld : MonoBehaviour
 {
     public Rigidbody2D TankRigid;
     public GameObject TurretObj;
@@ -40,12 +40,12 @@ public class EnemyTankScript : MonoBehaviour
     {
         Enginel.Play();
         Enginer.Play();
-        TankRigid.transform.Translate(new Vector3(4f, 0f, 0f) * Time.deltaTime * 1);
+        TankRigid.transform.Translate(new Vector3(0f, 4f, 0f) * Time.deltaTime * 1);
     }
 
     private void slowDown()
     {
-        TankRigid.transform.Translate(new Vector3(-4f, -0f, 0f) * Time.deltaTime * 1);
+        TankRigid.transform.Translate(new Vector3(0f, -4f, 0f) * Time.deltaTime * 1);
     }
 
     private void turnLeft()
