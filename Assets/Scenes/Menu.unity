@@ -1306,6 +1306,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 897842722366756886, guid: 657b5aee7fb60e740aa0163954ff9fa7, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4268005350396343256, guid: 657b5aee7fb60e740aa0163954ff9fa7, type: 3}
       propertyPath: m_Name
       value: SoundCompliance

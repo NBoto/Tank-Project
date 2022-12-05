@@ -45,4 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoEnemiesLeft: 0
-  MoreEnemies: {fileID: 2124711232420936665, guid: 668f404651c15f74b8d195202440334a, type: 3}
+  score: 0
+  MoreEnemies: {fileID: 7314648562191473943, guid: d6d4611a25ff5c346a5de293757d15f5, type: 3}
+  Life: 0
+  lastUsed: 0

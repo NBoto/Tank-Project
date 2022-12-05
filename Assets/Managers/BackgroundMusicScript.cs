@@ -10,12 +10,14 @@ public class BackgroundMusicScript : MonoBehaviour
 {
 
     public static BackgroundMusicScript instance;
-    public AudioSource MenuMusic;
-    public AudioSource GameMusic;
-    public AudioSource PlayerEngine;
-    public AudioSource PlayerFire;
-    public AudioSource ShellRicochet;
-    public AudioSource ShellExplosion;
+    public AudioSource MenuMusic; // 'Theme Menu' https://opengameart.org/content/theme-menu
+    public AudioSource GameMusic; // 'Battle in the winter' https://opengameart.org/content/battle-in-the-winter
+    public AudioSource DefeatStinger; // 'Lose theme' https://opengameart.org/content/lose-music-1
+    //public AudioSource VictoryStinger;
+    public AudioSource PlayerEngine; // 'Tank' https://soundbible.com/1325-Tank.html
+    public AudioSource PlayerFire; // 'Rumble' https://opengameart.org/content/rumbleexplosion
+    public AudioSource ShellRicochet; // 'Blop' https://soundbible.com/2067-Blop.html
+    //public AudioSource ShellExplosion; // 'Explosion' https://opengameart.org/content/big-explosion   <-- Attached to the Explosion GameObject instead.
     public Slider MusicSlider;
     public int MusicVolumeInt;
     public Slider SFXSlider;
@@ -29,10 +31,12 @@ public class BackgroundMusicScript : MonoBehaviour
             //Debug.Log(MusicSlider.value);
             MenuMusic.volume = MusicSlider.value;
             GameMusic.volume = MusicSlider.value;
+            DefeatStinger.volume = MusicSlider.value;
+            //VictoryStinger.volume = MusicSlider.value;
             PlayerEngine.volume = SFXSlider.value;
             PlayerFire.volume = SFXSlider.value;
             ShellRicochet.volume = SFXSlider.value;
-            ShellExplosion.volume = SFXSlider.value;
+            //ShellExplosion.volume = SFXSlider.value;
         }
     }
 
@@ -51,10 +55,15 @@ public class BackgroundMusicScript : MonoBehaviour
     }
     private void Update()
     {
+        ///MENU MUSIC///
         if (SceneManager.GetActiveScene().name == "Menu")
         {
             MenuMusic.UnPause();
             GameMusic.Pause();
+            if (!DefeatStinger.isPlaying)
+            {
+                DefeatStinger.Stop();
+            }
         }
         if (SceneManager.GetActiveScene().name == "OptionsMenu")
         {
@@ -64,6 +73,10 @@ public class BackgroundMusicScript : MonoBehaviour
             SFXSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
             MenuMusic.UnPause();
             GameMusic.Pause();
+            if (!DefeatStinger.isPlaying)
+            {
+                DefeatStinger.Stop();
+            }
         }
         if (SceneManager.GetActiveScene().name == "LevelSelector")
         {
@@ -71,6 +84,7 @@ public class BackgroundMusicScript : MonoBehaviour
             GameMusic.Pause();
         }
 
+        ///GAMEPLAY MUSIC///
         if (SceneManager.GetActiveScene().name == "TargetTutorial")
         {
             MenuMusic.Pause();
@@ -90,6 +104,22 @@ public class BackgroundMusicScript : MonoBehaviour
         {
             MenuMusic.Pause();
             GameMusic.UnPause();
+        }
+
+        ///DEFEAT/VICTORY MUSIC///
+        if (SceneManager.GetActiveScene().name == "DestroyedScene")
+        {
+            MenuMusic.Pause();
+            GameMusic.Pause();
+            if (!DefeatStinger.isPlaying)
+            {
+                DefeatStinger.Play();
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "VictoryScene")
+        {
+            MenuMusic.UnPause();
+            GameMusic.Pause();
         }
     }
 }

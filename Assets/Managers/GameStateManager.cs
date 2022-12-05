@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -11,9 +12,18 @@ public class GameStateManager : MonoBehaviour
     public int score;
     public GameObject MoreEnemies;
 
+    //public Image Life1Full;
+    //public Image Life2Full;
+    //public Image Life3Full;
+
     public int Life;
 
     public float lastUsed;
+
+    private void Start()
+    {
+        Life = 3;
+    }
 
     private void Awake()
     {
@@ -61,17 +71,27 @@ public class GameStateManager : MonoBehaviour
         {
             if (Life < 1) // Death.
             {
-                //Destroy(Heart1);
+                //Destroy(Life1Full.gameObject);
+                Destroy(GameObject.Find("Life1-Full"));
+                Destroy(GameObject.Find("Life2-Full"));
+                Destroy(GameObject.Find("Life3-Full"));
                 SceneManager.LoadScene("DestroyedScene");
             }
             else if (Life < 2) // Third Chance.
             {
-                //Destroy(Heart2);
+                Destroy(GameObject.Find("Life2-Full"));
+                Destroy(GameObject.Find("Life3-Full"));
+                //Destroy(Life2Full.gameObject);
             }
             else if (Life < 3) // Second Chance.
             {
-                //Destroy(Heart3);
+                Destroy(GameObject.Find("Life3-Full"));
+                //Destroy(Life3Full.gameObject);
             }
+        }
+        else
+        {
+            Life = 3;
         }
 
 

@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Environment
   - PlayerShell
+  - Enemy
+  - EnemyShell
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Environment
   - Water
   - UI
   - 

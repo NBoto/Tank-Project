@@ -4858,7 +4858,6 @@ GameObject:
   - component: {fileID: 8943178680228749656}
   - component: {fileID: 5256929363308138414}
   - component: {fileID: 5145408883192757129}
-  - component: {fileID: 92310677632997594}
   m_Layer: 0
   m_Name: Enemy Tank
   m_TagString: Enemy
@@ -4874,7 +4873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5451603078072567189}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.9498855, y: -0.44529092, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.09341195, y: 0.0965485, z: 0.1283}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4973,27 +4972,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 14, y: 9}
   m_Direction: 1
---- !u!114 &92310677632997594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5451603078072567189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cbcea940922c946a4e479b173b80d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TankRigid: {fileID: 5256929363308138414}
-  TurretObj: {fileID: 781064248001501482}
-  Shell: {fileID: 933379790493691467, guid: 0c6d09c2fc4c3a447b8a22ff412046b6, type: 3}
-  Enginel: {fileID: 795694174179402542}
-  Enginer: {fileID: 6879298385477440978}
-  GOTOPOSITION: {fileID: 6756326006844299622, guid: 5fccc96c203b1d44a812e3aff10328bf, type: 3}
-  gsm: {fileID: 0}
-  Shoot: 
-  lastFired: 0
 --- !u!1 &6423827405443897292
 GameObject:
   m_ObjectHideFlags: 0
