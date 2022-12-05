@@ -16,14 +16,14 @@ public class BackgroundMusicScript : MonoBehaviour
     public AudioSource PlayerEngine; // 'Tank' https://soundbible.com/1325-Tank.html
     public AudioSource PlayerFire; // 'Rumble' https://opengameart.org/content/rumbleexplosion
     public AudioSource ShellRicochet; // 'Blop' https://soundbible.com/2067-Blop.html
-    //public AudioSource ShellExplosion; // 'Explosion' https://opengameart.org/content/big-explosion   <-- Attached to the Explosion GameObject instead.
+    public AudioSource Explosion; // 'Explosion' https://opengameart.org/content/big-explosion
     public AudioSource EnemyEngine;
     public AudioSource EnemyFire;
     public AudioSource ShellRicochetE;
     public Slider MusicSlider;
-    public int MusicVolumeInt;
+    public float MusicVolumeInt;
     public Slider SFXSlider;
-    public int SFXVolumeInt;
+    public float SFXVolumeInt;
 
     // Invoked when the value of the slider changes.
     public void ValueChangeCheck()
@@ -35,17 +35,17 @@ public class BackgroundMusicScript : MonoBehaviour
             GameMusic.volume = MusicSlider.value;
             DefeatStinger.volume = MusicSlider.value;
             //VictoryStinger.volume = MusicSlider.value;
+            ShellRicochet.volume = SFXSlider.value;
+            ShellRicochetE.volume = SFXSlider.value;
+            Explosion.volume = SFXSlider.value;
             PlayerEngine.volume = SFXSlider.value;
             PlayerFire.volume = SFXSlider.value;
             EnemyEngine.volume = SFXSlider.value;
             EnemyFire.volume = SFXSlider.value;
-            ShellRicochet.volume = SFXSlider.value;
-            ShellRicochetE.volume = SFXSlider.value;
-            //ShellExplosion.volume = SFXSlider.value;
         }
     }
 
-    private void Awake()
+    void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
 
@@ -58,8 +58,10 @@ public class BackgroundMusicScript : MonoBehaviour
         Destroy(gameObject);
         }
     }
-    private void Update()
+    void Update()
     {
+
+
         ///MENU MUSIC///
         if (SceneManager.GetActiveScene().name == "Menu")
         {

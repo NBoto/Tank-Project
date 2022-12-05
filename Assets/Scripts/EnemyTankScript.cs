@@ -14,7 +14,7 @@ public class EnemyTankScript : MonoBehaviour
     public ParticleSystem Enginer;
     public AudioSource EngineSFX;
     public AudioSource FireSFX;
-    public GameStateManager gsm;
+    public BackgroundMusicScript sm;
 
     /// USES: https://www.youtube.com/watch?v=jvtFUfJ6CP8
     public AIPath AIPath;
@@ -34,15 +34,24 @@ public class EnemyTankScript : MonoBehaviour
 
     void Start()
     {
-        GameObject gs = GameObject.Find("GameStateManager");
         GameObject Player = GameObject.Find("PlayerTank");
         AIDesSetter.target = Player.transform;
-        gsm = gs.GetComponent<GameStateManager>();
     }
 
     void Update()
     {
         GameObject Player = GameObject.Find("PlayerTank");
+
+        /////////
+        ///Grabs the sound manager and applies it's logic here. Since for some reason the link between the audio sources for the tank aren't working.
+        if (!sm)
+        {
+            sm = GameObject.Find("SoundCompliance").GetComponent<BackgroundMusicScript>();
+        }
+
+        EngineSFX.volume = sm.EnemyEngine.volume-0.7f;
+        FireSFX.volume = sm.EnemyFire.volume;
+        /////////
 
         if (!ChasePlayer) // If not chasing player.
         {

@@ -10028,7 +10028,7 @@ MonoBehaviour:
   Enginer: {fileID: 4754786375786678437}
   EngineSFX: {fileID: 637416108201730965}
   FireSFX: {fileID: 2721039206686778191}
-  gsm: {fileID: 0}
+  sm: {fileID: 0}
   AIPath: {fileID: 6203701637150198625}
   AIDesSetter: {fileID: 7644595708512529518}
   Waypoint: {fileID: 7677143475363680963, guid: 151fb01a282bdd04b92ca79bbc6f7d99, type: 3}
@@ -10047,7 +10047,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: faac5fcb90cee33448f66858c7837557, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 3
   Loop: 0
   Mute: 0
@@ -10143,7 +10143,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 35944a6dea406cd45a43c6a387ae4890, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1.3
   Loop: 1
   Mute: 0

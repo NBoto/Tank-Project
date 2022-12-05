@@ -50,16 +50,17 @@ MonoBehaviour:
   MenuMusic: {fileID: 4268005350396343257}
   GameMusic: {fileID: 6556490133561985866}
   DefeatStinger: {fileID: 897842722366756886}
-  PlayerEngine: {fileID: 306546848591037457, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
-  PlayerFire: {fileID: 7576794132031138983, guid: 29040a0fa12f5c944a6dd09413c5d99b, type: 3}
+  PlayerEngine: {fileID: -8015507134954227219, guid: 5f92257c5b3dde94d83b181e9d2b1f48, type: 3}
+  PlayerFire: {fileID: -8843174917069855305, guid: 5f92257c5b3dde94d83b181e9d2b1f48, type: 3}
   ShellRicochet: {fileID: 7316429720985204788, guid: 777ecc16bd96bff4fbde8c760a4c715c, type: 3}
+  Explosion: {fileID: 2318423815316103106, guid: b4dae4ea999266e468b99e3232a1627b, type: 3}
   EnemyEngine: {fileID: 637416108201730965, guid: d6d4611a25ff5c346a5de293757d15f5, type: 3}
   EnemyFire: {fileID: 2721039206686778191, guid: d6d4611a25ff5c346a5de293757d15f5, type: 3}
   ShellRicochetE: {fileID: 8033697148318876884, guid: 0c6d09c2fc4c3a447b8a22ff412046b6, type: 3}
   MusicSlider: {fileID: 0}
-  MusicVolumeInt: 0
+  MusicVolumeInt: 1
   SFXSlider: {fileID: 0}
-  SFXVolumeInt: 0
+  SFXVolumeInt: 1
 --- !u!82 &4268005350396343257
 AudioSource:
   m_ObjectHideFlags: 0

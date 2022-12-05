@@ -11,6 +11,7 @@ public class PlayerTankScript : MonoBehaviour
     public ParticleSystem Enginer;
     public AudioSource EngineSFX;
     public AudioSource FireSFX;
+    public BackgroundMusicScript sm;
     public int ShellsActive;
 
     //Input keys vars//
@@ -23,15 +24,21 @@ public class PlayerTankScript : MonoBehaviour
 
     public float lastFired;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        EngineSFX.Play();
-    }
 
     // Update is called once per frame
     void Update()
     {
+        /////////
+        ///Grabs the sound manager and applies it's logic here. Since for some reason the link between the audio sources for the tank aren't working.
+        if (!sm)
+        {
+            sm = GameObject.Find("SoundCompliance").GetComponent<BackgroundMusicScript>();
+        }
+
+        EngineSFX.volume = sm.PlayerEngine.volume;
+        FireSFX.volume = sm.PlayerFire.volume;
+        /////////
+
         GameObject TmpShell;
 
         //Look towards cursor//
@@ -47,18 +54,27 @@ public class PlayerTankScript : MonoBehaviour
             TankRigid.transform.Translate(new Vector3(4f, 0f, 0f) * Time.deltaTime * 1);
             Enginer.Play();
             Enginel.Play();
-            EngineSFX.UnPause();
+            if (!EngineSFX.isPlaying)
+            {
+                EngineSFX.Play();
+            }
         }
         else
         if(Input.GetKey(Down))
         {
             TankRigid.transform.Translate(new Vector3(-4f, -0f, 0f) * Time.deltaTime * 1);
-            EngineSFX.UnPause();
+            if (!EngineSFX.isPlaying)
+            {
+                EngineSFX.Play();
+            }
         }
         else {
             Enginer.Stop();
             Enginel.Stop();
-            EngineSFX.Pause();
+            if (EngineSFX.isPlaying)
+            {
+                EngineSFX.Stop();
+            }
         }
         if (Input.GetKey(Left))
         {
