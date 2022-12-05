@@ -21,15 +21,8 @@ public class EnemyTankScript : MonoBehaviour
 
     //Input keys vars//
     public string Shoot;
-    ///////////////////
-
     public float lastFired;
-
-    //AI ADDITIONS//
-    public GameObject GOTOPOSITION;
-    private int timeToMove;
-    private bool IsSpawned;
-    ////////////////
+    ///////////////////
 
 
     void Start()
@@ -93,9 +86,9 @@ public class EnemyTankScript : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collision2D trigger)
     {
-        if (collision.gameObject.tag == "Player")
+        if (trigger.gameObject.tag == "Player")
         {
             GameObject TmpShell;
 

@@ -9842,6 +9842,7 @@ GameObject:
   - component: {fileID: 5149085765749283345}
   - component: {fileID: 7106944125925330785}
   - component: {fileID: 249124221715912323}
+  - component: {fileID: 3619619292760402725}
   - component: {fileID: 3323183325691119456}
   - component: {fileID: 6203701637150198625}
   - component: {fileID: 7644595708512529518}
@@ -9906,6 +9907,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &3619619292760402725
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314648562191473943}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!114 &3323183325691119456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10012,4 +10029,3 @@ MonoBehaviour:
   AIDesSetter: {fileID: 7644595708512529518}
   Shoot: 
   lastFired: 0
-  GOTOPOSITION: {fileID: 0}
