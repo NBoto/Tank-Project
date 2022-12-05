@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class ShellBehaviour : MonoBehaviour
+public class ShellBehaviourP : MonoBehaviour
 {
 
     private Rigidbody2D ShellRigid;
@@ -11,7 +11,6 @@ public class ShellBehaviour : MonoBehaviour
     public AudioSource RicochetSFX;
     private GameStateManager gsm;
     public GameObject ExplosionP;
-    public AudioSource ExplosionSFX;
 
     // Use this for initialization
     void Start()
@@ -25,6 +24,10 @@ public class ShellBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gsm)
+        {
+            gsm = GameObject.Find("GameStateManager").GetComponent<GameStateManager>();
+        }
         if (!PauseMenu.Paused) {
         ShellLife++;
         if (ShellLife >= 4250)
@@ -64,7 +67,6 @@ public class ShellBehaviour : MonoBehaviour
             Destroy(this.gameObject);
 
             Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
-            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "PlayerShell")
         {
@@ -72,7 +74,6 @@ public class ShellBehaviour : MonoBehaviour
             Destroy(this.gameObject);
 
             Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
-            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "EnemyDecoy")
         {
@@ -81,7 +82,6 @@ public class ShellBehaviour : MonoBehaviour
             gsm.adjustScore(5);
 
             Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
-            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "Enemy")
         {
@@ -90,7 +90,6 @@ public class ShellBehaviour : MonoBehaviour
             gsm.adjustScore(5);
 
             Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
-            ExplosionSFX.Play();
         }
         if (collision.gameObject.tag == "EnemyShell")
         {
@@ -99,7 +98,6 @@ public class ShellBehaviour : MonoBehaviour
             gsm.adjustScore(1);
 
             Explosion = Instantiate(ExplosionP, this.transform.position, this.transform.rotation);
-            ExplosionSFX.Play();
         }
     }
 }

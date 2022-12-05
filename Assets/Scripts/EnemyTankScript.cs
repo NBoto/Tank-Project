@@ -12,6 +12,8 @@ public class EnemyTankScript : MonoBehaviour
     public GameObject Shell;
     public ParticleSystem Enginel;
     public ParticleSystem Enginer;
+    public AudioSource EngineSFX;
+    public AudioSource FireSFX;
     public GameStateManager gsm;
 
     /// USES: https://www.youtube.com/watch?v=jvtFUfJ6CP8
@@ -19,9 +21,14 @@ public class EnemyTankScript : MonoBehaviour
     public AIDestinationSetter AIDesSetter;
     ///////////////////
 
+    bool ChasePlayer;
+    public GameObject Waypoint;
+    private GameObject PatrolPoint;
+
     //Input keys vars//
     public string Shoot;
     public float lastFired;
+    public float lastSpawned;
     ///////////////////
 
 
@@ -33,32 +40,29 @@ public class EnemyTankScript : MonoBehaviour
         gsm = gs.GetComponent<GameStateManager>();
     }
 
-    private void fireBullet()
-    {
-        GameObject tmpBullet;
-
-        if (Time.time > lastFired + 1)
-        {
-            tmpBullet = Instantiate(
-                           Shell,
-                           this.transform.position + this.transform.up * 1,
-                            this.transform.rotation
-                        );
-
-            lastFired = Time.time;
-        }
-
-    }
-
     void Update()
     {
         GameObject Player = GameObject.Find("PlayerTank");
-        AIDesSetter.target = Player.transform;
 
-        if (Player)
+        if (!ChasePlayer) // If not chasing player.
         {
-            Vector2 FaceTo = new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y);
-            TurretObj.transform.right = FaceTo;
+            if (!PatrolPoint) // When there is no current waypoint.
+            {
+                PatrolPoint = Instantiate(Waypoint, new Vector3(Random.Range(-20, 20), Random.Range(-16, 16), 0), Quaternion.identity); // Spawn a waypoint in a random position.
+            }
+            if (PatrolPoint) // When there is a current waypoint.
+            {
+                AIDesSetter.target = PatrolPoint.transform; // Move to waypoint.
+            }
+        }
+        else // If chasing player.
+        {
+            if (Player)
+            {
+                AIDesSetter.target = Player.transform; // Move to player.
+                Vector2 FaceTo = new Vector2(Player.transform.position.x - transform.position.x, Player.transform.position.y - transform.position.y); // get player position.
+                TurretObj.transform.right = FaceTo; // face current axis towards player.
+            }
         }
 
         //if (TankRigid.velocity.y >= 0 ^ TankRigid.velocity.x >= 0)
@@ -67,6 +71,7 @@ public class EnemyTankScript : MonoBehaviour
             if (!Enginel.isPlaying)
             {
                 Enginel.Play();
+                EngineSFX.Play();
             }
             if (!Enginer.isPlaying)
             {
@@ -78,6 +83,7 @@ public class EnemyTankScript : MonoBehaviour
             if (Enginel.isPlaying)
             {
                 Enginel.Stop();
+                EngineSFX.Stop();
             }
             if (Enginer.isPlaying)
             {
@@ -86,17 +92,41 @@ public class EnemyTankScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collision2D trigger)
+    void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (trigger.gameObject.tag == "Player")
+        if (trigger.CompareTag("Player"))
+        {
+            ChasePlayer = true;
+        }
+    }
+    void OnTriggerStay2D(Collider2D trigger)
+    {
+        if (trigger.CompareTag("Player"))
         {
             GameObject TmpShell;
 
-            if (Time.time > lastFired + 0.4f)
+            if (Time.time > lastFired + 1f)
             {
-                TmpShell = Instantiate(Shell, TurretObj.transform.position + (TurretObj.transform.right * 1.2f), TurretObj.transform.rotation * Quaternion.Euler(0f, 0f, -90f));
+                FireSFX.Play();
+                TmpShell = Instantiate(Shell, TurretObj.transform.position + (TurretObj.transform.right * 1.2f), TurretObj.transform.rotation * Quaternion.Euler(0f, 0f, -90f)); // shoot.
                 lastFired = Time.time;
             }
+        }
+        if (trigger.CompareTag("Waypoint"))
+        {
+            if (Time.time > lastSpawned + 2f)
+            {
+                Destroy(PatrolPoint);
+                lastSpawned = Time.time;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D trigger)
+    {
+        if (trigger.CompareTag("Player"))
+        {
+            ChasePlayer = false;
         }
     }
 

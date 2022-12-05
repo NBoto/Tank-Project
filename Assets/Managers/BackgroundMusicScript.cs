@@ -18,6 +18,8 @@ public class BackgroundMusicScript : MonoBehaviour
     public AudioSource PlayerFire; // 'Rumble' https://opengameart.org/content/rumbleexplosion
     public AudioSource ShellRicochet; // 'Blop' https://soundbible.com/2067-Blop.html
     //public AudioSource ShellExplosion; // 'Explosion' https://opengameart.org/content/big-explosion   <-- Attached to the Explosion GameObject instead.
+    public AudioSource EnemyEngine;
+    public AudioSource EnemyFire;
     public Slider MusicSlider;
     public int MusicVolumeInt;
     public Slider SFXSlider;
@@ -35,6 +37,8 @@ public class BackgroundMusicScript : MonoBehaviour
             //VictoryStinger.volume = MusicSlider.value;
             PlayerEngine.volume = SFXSlider.value;
             PlayerFire.volume = SFXSlider.value;
+            EnemyEngine.volume = SFXSlider.value;
+            EnemyFire.volume = SFXSlider.value;
             ShellRicochet.volume = SFXSlider.value;
             //ShellExplosion.volume = SFXSlider.value;
         }

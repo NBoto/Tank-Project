@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 933379790493691470}
   - component: {fileID: 933379790493691469}
   - component: {fileID: 8721958174889806864}
-  - component: {fileID: 933379790493691456}
+  - component: {fileID: 2820123621711448696}
   - component: {fileID: 860953309101976025}
   - component: {fileID: 4626918303846065807}
   - component: {fileID: 8033697148318876884}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0aa50c8875a562446bc3f37beda41a65, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9150943, g: 0.60862404, b: 0.60862404, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,7 +137,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 2}
   m_EdgeRadius: 0
---- !u!114 &933379790493691456
+--- !u!114 &2820123621711448696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,10 +146,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 933379790493691467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532f5b3168f6e5149a02b9b37c14535c, type: 3}
+  m_Script: {fileID: 11500000, guid: cbadc3d0b3d54d648a3d06b321646b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RicochetSFX: {fileID: 8033697148318876884}
+  ExplosionP: {fileID: 2147764207212368088, guid: b4dae4ea999266e468b99e3232a1627b, type: 3}
 --- !u!198 &860953309101976025
 ParticleSystem:
   m_ObjectHideFlags: 0

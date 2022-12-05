@@ -18,7 +18,7 @@ public class PlayerTankScript : MonoBehaviour
     public string Left;
     public string Right;
     public string Down;
-    public string Shoot;
+    //public string Shoot;
     ///////////////////
 
     public float lastFired;
@@ -30,7 +30,7 @@ public class PlayerTankScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         GameObject TmpShell;
 
@@ -70,7 +70,8 @@ public class PlayerTankScript : MonoBehaviour
 
         }
 
-        if (Input.GetKey(Shoot))
+        //if (Input.GetKey(Shoot))
+        if (Input.GetMouseButtonDown(0))
         {
             ShellsActive = GameObject.FindGameObjectsWithTag("PlayerShell").Length;
             if (Time.time > lastFired + 0.4f & ShellsActive < 5)

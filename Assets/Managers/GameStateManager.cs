@@ -99,8 +99,7 @@ public class GameStateManager : MonoBehaviour
         {
             if (GameObject.FindGameObjectsWithTag("Player").Length == 0) //If the player doesn't exist.
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Refresh the scene. Player Respawn Mechanic.
-                score = 0;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Refresh the scene. Player Respawn Mechanic. Lose a life.
                 Life -= 1;
             }
         }
