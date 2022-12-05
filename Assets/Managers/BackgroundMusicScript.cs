@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -20,6 +19,7 @@ public class BackgroundMusicScript : MonoBehaviour
     //public AudioSource ShellExplosion; // 'Explosion' https://opengameart.org/content/big-explosion   <-- Attached to the Explosion GameObject instead.
     public AudioSource EnemyEngine;
     public AudioSource EnemyFire;
+    public AudioSource ShellRicochetE;
     public Slider MusicSlider;
     public int MusicVolumeInt;
     public Slider SFXSlider;
@@ -40,6 +40,7 @@ public class BackgroundMusicScript : MonoBehaviour
             EnemyEngine.volume = SFXSlider.value;
             EnemyFire.volume = SFXSlider.value;
             ShellRicochet.volume = SFXSlider.value;
+            ShellRicochetE.volume = SFXSlider.value;
             //ShellExplosion.volume = SFXSlider.value;
         }
     }

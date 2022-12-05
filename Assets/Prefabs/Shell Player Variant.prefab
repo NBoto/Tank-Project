@@ -152,7 +152,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RicochetSFX: {fileID: 7316429720985204788}
   ExplosionP: {fileID: 2147764207212368088, guid: b4dae4ea999266e468b99e3232a1627b, type: 3}
-  ExplosionSFX: {fileID: 3683831573428042848}
 --- !u!198 &8497676419945857235
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4946,7 +4945,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 944c815cd84652641a8b833b23026017, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.28
+  m_Volume: 0
   m_Pitch: 2
   Loop: 0
   Mute: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ShellBehaviourP : MonoBehaviour
@@ -30,12 +29,12 @@ public class ShellBehaviourP : MonoBehaviour
         }
         if (!PauseMenu.Paused) {
         ShellLife++;
-        if (ShellLife >= 4250)
+        if (ShellLife >= 250)
         {
             Destroy(this.gameObject);
             }
 
-            ShellRigid.AddForce(this.transform.up * 40);
+            ShellRigid.AddForce(this.transform.up * 400);
             //ShellRigid.transform.Translate(new Vector3(0f, 0.007f, 0f));
             ShellRigid.transform.localScale -= (new Vector3(0.00001f, 0.00001f, 0.00001f));
         }
